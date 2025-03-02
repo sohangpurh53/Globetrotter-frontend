@@ -84,6 +84,3 @@ The `api.js` utility provides functions for all backend interactions:
 - `fetchUserProfile()`: Get a player's score and history
 - `loginOrCreateUser()`: Handle user authentication flow
 
-## Deployment
-
-The application can be deployed to any static hosting service after building with `npm run build`. The backend API URL should be configured appropriately for production environments.
