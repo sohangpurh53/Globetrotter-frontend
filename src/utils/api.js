@@ -1,7 +1,8 @@
 import axios from 'axios';
 
 // Use the proxy configured in vite.config.js
-const API_BASE_URL = '/api';
+// const API_BASE_URL = '/api';
+const API_BASE_URL = 'https://api.golobetrotte.digitaltek.co.in/api';
 
 // Create axios instance with base URL
 const api = axios.create({
