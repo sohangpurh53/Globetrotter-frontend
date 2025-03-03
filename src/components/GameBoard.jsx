@@ -87,6 +87,7 @@ const GameBoard = ({ username, score, totalAttempts, updateScoreAndAttempts, inv
   }, []);
 
   const handleGuess = async (guess) => {
+    
     setSelectedOption(guess);
     setIsAnimating(true);
     
@@ -96,7 +97,7 @@ const GameBoard = ({ username, score, totalAttempts, updateScoreAndAttempts, inv
       if (data.new_score !== undefined && data.total_attempts !== undefined) {
         updateScoreAndAttempts(data.new_score, data.total_attempts);
       }
-      
+      setResult(data);
       if (data.correct) {
         // Correct answer feedback
         setShowConfetti(true);
@@ -126,7 +127,7 @@ const GameBoard = ({ username, score, totalAttempts, updateScoreAndAttempts, inv
         }, 3000);
       }
       
-      setResult(data);
+      
     } catch (error) {
       toast({
         title: 'Error',
@@ -231,10 +232,12 @@ const GameBoard = ({ username, score, totalAttempts, updateScoreAndAttempts, inv
             key={index}
             size="lg"
             colorScheme={
-              selectedOption === option
-                ? result?.correct && selectedOption === option
+              result
+                ? option === destination.correct_city
                   ? 'green'
-                  : 'red'
+                  : selectedOption === option
+                    ? 'red'
+                    : 'blue'
                 : 'blue'
             }
             onClick={() => !result && handleGuess(option)}
